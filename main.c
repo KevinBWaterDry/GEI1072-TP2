@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
 
 
 #define CM_SUCCESS              (-3)

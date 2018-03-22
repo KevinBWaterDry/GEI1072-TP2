@@ -233,3 +233,19 @@ int Gauss(double **m, int n){
 
     return 0;
 }
+void solution(double**m, double* sol, int n) {
+	int i;
+	int j;
+	int sousSol = 0;
+	for (i = 1; i <= n; ++i) {
+		for (j = 1; j < i; ++j) {
+			sousSol = sol[n - j] * m[n - j][n - i] + sousSol;
+
+		}
+		if (m[n - i][n - i] == 0) {
+			printf("Erreur, la matrice admet une infinite ou pas de solution.");
+		}
+		sol[n - i] = (m[n - i + 1][n - i] - sousSol) / m[n - i][n - i];
+	}
+	return 0;
+}

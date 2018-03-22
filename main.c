@@ -50,20 +50,24 @@ int main(void)
 
     fclose(fd);
 
-    if ((code = Gauss(m, n)) != GAUSS_SUCCESS)
-        MessageErreur("Erreur lors de la resolution: ", code);
+    Gauss(m, n);
 
-    Solution(m, sol, n);
-
-    for (i = 0; i<n; ++i)
-        printf("%s = %lf\n", noms[i], sol[i]);
-
-    //_getch();
+//    if ((code = Gauss(m, n)) != GAUSS_SUCCESS)
+//        MessageErreur("Erreur lors de la resolution: ", code);
+//
+//    Solution(m, sol, n);
+//
+//    for (i = 0; i<n; ++i)
+//        printf("%s = %lf\n", noms[i], sol[i]);
+//
+//    //_getch();
 
     return 0;
 }
 
-char **ChargeNoms(FILE *fd, int *n, int *code) {
+
+
+char** ChargeNoms(FILE *fd, int *n, int *code) {
     int finLigne = 0;
     int PremiereFois = 1;
     char currentChar = '0';
@@ -187,6 +191,10 @@ double* CreationVecteurResultats(int n){
 
 }
 
+void MessageErreur(char* erreur, int code){
+    printf("Erreur : %d", code);
+}
+
 
 /**
  * Substrats two line numbers by a coefficient.
@@ -221,4 +229,6 @@ int Gauss(double **m, int n){
         coef = m[cursorV + i][cursorH] / m[cursorV][cursorH];
         lineMinusLine(cursorV + i, cursorV, coef, m, n);
     }
+
+    return 0;
 }
